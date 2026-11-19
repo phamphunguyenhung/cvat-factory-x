@@ -1,0 +1,4 @@
+# CVAT lop (edufun). PAT KHONG nam o day: dat CVAT_EDUFUN_PAT trong cvat/.env (gitignored) hoac bien moi truong.
+host: https://cvat.edufun.ai
+org: cohort-5a
+pat_env: CVAT_EDUFUN_PAT

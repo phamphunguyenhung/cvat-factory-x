@@ -1,0 +1,843 @@
+{
+  "per_type_recall": {
+    "T1_MISSING_IMAGE": 1.0,
+    "T2_WRONG_HASH": 1.0,
+    "T3_INVALID_CLASS": 1.0,
+    "T4_BBOX_OUT_OF_BOUNDS": 1.0,
+    "T5_BBOX_DRIFT": 1.0,
+    "T6_CLASS_SWAP": 1.0,
+    "T7_SCENE_LEAK": 1.0,
+    "T8_GUIDELINE_MISMATCH": 1.0
+  },
+  "overall_critical_fault_recall": 1.0,
+  "overall_fault_recall": 1.0,
+  "false_hold_rate": 0.0,
+  "false_release_rate": 0.0,
+  "avg_latency_ms": 659.161,
+  "dev_seeds": [
+    42,
+    43
+  ],
+  "held_out_seeds": [
+    101,
+    102,
+    103
+  ],
+  "total_fault_runs": 40,
+  "total_clean_runs": 1,
+  "metamorphic_tests": {
+    "manifest_order_invariance": {
+      "passed": true,
+      "baseline_issue_count": 0,
+      "shuffled_issue_count": 0
+    },
+    "clean_copy_zero_false_positives": {
+      "passed": true,
+      "recommended_status": "VALIDATED",
+      "issue_count": 0
+    },
+    "all_passed": true
+  },
+  "runs": [
+    {
+      "split": "dev",
+      "seed": 42,
+      "fault_type": "T1_MISSING_IMAGE",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 1,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 625.513
+    },
+    {
+      "split": "dev",
+      "seed": 42,
+      "fault_type": "T2_WRONG_HASH",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 586.759
+    },
+    {
+      "split": "dev",
+      "seed": 42,
+      "fault_type": "T3_INVALID_CLASS",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 0,
+        "T5": 0,
+        "T6": 1,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 568.497
+    },
+    {
+      "split": "dev",
+      "seed": 42,
+      "fault_type": "T4_BBOX_OUT_OF_BOUNDS",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 1,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 529.414
+    },
+    {
+      "split": "dev",
+      "seed": 42,
+      "fault_type": "T5_BBOX_DRIFT",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 1,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 1018.527
+    },
+    {
+      "split": "dev",
+      "seed": 42,
+      "fault_type": "T6_CLASS_SWAP",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 2,
+        "T6": 4,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 1076.651
+    },
+    {
+      "split": "dev",
+      "seed": 42,
+      "fault_type": "T7_SCENE_LEAK",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 1,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 766.707
+    },
+    {
+      "split": "dev",
+      "seed": 42,
+      "fault_type": "T8_GUIDELINE_MISMATCH",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 1,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 666.978
+    },
+    {
+      "split": "dev",
+      "seed": 43,
+      "fault_type": "T1_MISSING_IMAGE",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 1,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 1337.197
+    },
+    {
+      "split": "dev",
+      "seed": 43,
+      "fault_type": "T2_WRONG_HASH",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 925.651
+    },
+    {
+      "split": "dev",
+      "seed": 43,
+      "fault_type": "T3_INVALID_CLASS",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 0,
+        "T5": 0,
+        "T6": 1,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 679.37
+    },
+    {
+      "split": "dev",
+      "seed": 43,
+      "fault_type": "T4_BBOX_OUT_OF_BOUNDS",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 1,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 633.733
+    },
+    {
+      "split": "dev",
+      "seed": 43,
+      "fault_type": "T5_BBOX_DRIFT",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 2,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 779.502
+    },
+    {
+      "split": "dev",
+      "seed": 43,
+      "fault_type": "T6_CLASS_SWAP",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 6,
+        "T6": 7,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 741.907
+    },
+    {
+      "split": "dev",
+      "seed": 43,
+      "fault_type": "T7_SCENE_LEAK",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 1,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 641.164
+    },
+    {
+      "split": "dev",
+      "seed": 43,
+      "fault_type": "T8_GUIDELINE_MISMATCH",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 1,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 587.033
+    },
+    {
+      "split": "held_out",
+      "seed": 101,
+      "fault_type": "T1_MISSING_IMAGE",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 1,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 665.725
+    },
+    {
+      "split": "held_out",
+      "seed": 101,
+      "fault_type": "T2_WRONG_HASH",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 732.289
+    },
+    {
+      "split": "held_out",
+      "seed": 101,
+      "fault_type": "T3_INVALID_CLASS",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 0,
+        "T5": 0,
+        "T6": 1,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 680.326
+    },
+    {
+      "split": "held_out",
+      "seed": 101,
+      "fault_type": "T4_BBOX_OUT_OF_BOUNDS",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 1,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 804.061
+    },
+    {
+      "split": "held_out",
+      "seed": 101,
+      "fault_type": "T5_BBOX_DRIFT",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 7,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 534.846
+    },
+    {
+      "split": "held_out",
+      "seed": 101,
+      "fault_type": "T6_CLASS_SWAP",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 6,
+        "T6": 7,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 553.689
+    },
+    {
+      "split": "held_out",
+      "seed": 101,
+      "fault_type": "T7_SCENE_LEAK",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 1,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 684.182
+    },
+    {
+      "split": "held_out",
+      "seed": 101,
+      "fault_type": "T8_GUIDELINE_MISMATCH",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 1,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 574.352
+    },
+    {
+      "split": "held_out",
+      "seed": 102,
+      "fault_type": "T1_MISSING_IMAGE",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 1,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 601.574
+    },
+    {
+      "split": "held_out",
+      "seed": 102,
+      "fault_type": "T2_WRONG_HASH",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 636.153
+    },
+    {
+      "split": "held_out",
+      "seed": 102,
+      "fault_type": "T3_INVALID_CLASS",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 0,
+        "T5": 0,
+        "T6": 1,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 650.38
+    },
+    {
+      "split": "held_out",
+      "seed": 102,
+      "fault_type": "T4_BBOX_OUT_OF_BOUNDS",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 1,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 582.716
+    },
+    {
+      "split": "held_out",
+      "seed": 102,
+      "fault_type": "T5_BBOX_DRIFT",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 6,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 591.243
+    },
+    {
+      "split": "held_out",
+      "seed": 102,
+      "fault_type": "T6_CLASS_SWAP",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 1,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 494.096
+    },
+    {
+      "split": "held_out",
+      "seed": 102,
+      "fault_type": "T7_SCENE_LEAK",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 1,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 533.75
+    },
+    {
+      "split": "held_out",
+      "seed": 102,
+      "fault_type": "T8_GUIDELINE_MISMATCH",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 1,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 545.38
+    },
+    {
+      "split": "held_out",
+      "seed": 103,
+      "fault_type": "T1_MISSING_IMAGE",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 1,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 529.731
+    },
+    {
+      "split": "held_out",
+      "seed": 103,
+      "fault_type": "T2_WRONG_HASH",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 579.423
+    },
+    {
+      "split": "held_out",
+      "seed": 103,
+      "fault_type": "T3_INVALID_CLASS",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 0,
+        "T5": 0,
+        "T6": 1,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 515.351
+    },
+    {
+      "split": "held_out",
+      "seed": 103,
+      "fault_type": "T4_BBOX_OUT_OF_BOUNDS",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 1,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 496.483
+    },
+    {
+      "split": "held_out",
+      "seed": 103,
+      "fault_type": "T5_BBOX_DRIFT",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 6,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 567.767
+    },
+    {
+      "split": "held_out",
+      "seed": 103,
+      "fault_type": "T6_CLASS_SWAP",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 1,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 477.739
+    },
+    {
+      "split": "held_out",
+      "seed": 103,
+      "fault_type": "T7_SCENE_LEAK",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 1,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 449.171
+    },
+    {
+      "split": "held_out",
+      "seed": 103,
+      "fault_type": "T8_GUIDELINE_MISMATCH",
+      "detected": true,
+      "recommended_status": "HOLD",
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 1,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "latency_ms": 530.618
+    }
+  ]
+}

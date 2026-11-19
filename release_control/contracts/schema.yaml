@@ -1,0 +1,76 @@
+apiVersion: v3.2.0
+kind: DataContract
+id: cvat-factory-x-dataset-contract
+version: 1.0.0
+status: active
+name: CVAT Factory X Dataset Release Contract
+description: >
+  ODCS v3.2-style dataset contract defining manifest requirements, image/label/metadata
+  structure, and supported dataset profiles (COCO80 and CVAT Face50/Pose17).
+
+manifest:
+  required_fields:
+    - dataset_name
+    - version
+    - profile
+    - schema_version
+    - created_at
+    - images
+    - annotations
+  supported_profiles:
+    - coco80
+    - cvat_face50
+    - cvat_pose17
+
+structure:
+  image_record:
+    required_fields:
+      - image_id
+      - file_name
+      - relative_path
+      - sha256
+      - width
+      - height
+      - size_bytes
+    hash_algorithm: sha256
+    allowed_extensions:
+      - .jpg
+      - .jpeg
+      - .png
+      - .webp
+    min_width: 1
+    min_height: 1
+  annotation_box:
+    required_fields:
+      - class_id
+      - x_center
+      - y_center
+      - width
+      - height
+    allowed_bbox_formats:
+      - yolo_norm
+      - xywh_abs
+      - xyxy_abs
+    default_bbox_format: yolo_norm
+  metadata:
+    recommended_fields:
+      - source_uri
+      - split_counts
+      - scene_id
+
+profiles:
+  coco80:
+    task_type: object_detection
+    taxonomy_ref: coco80
+    label_format: yolo_norm
+    require_non_empty_images: true
+  cvat_face50:
+    task_type: facial_landmarks
+    taxonomy_ref: cvat_face50
+    label_format: cvat_xml_or_yolo_norm
+    expected_keypoints: 50
+  cvat_pose17:
+    task_type: human_pose_estimation
+    taxonomy_ref: cvat_pose17
+    label_format: cvat_xml_or_coco_keypoints
+    expected_keypoints: 17

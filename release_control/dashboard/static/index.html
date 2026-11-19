@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CVAT Factory X — Data Release Control Tower</title>
+  <style>
+    :root {
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-subtle: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --border: #cbd5e1;
+      --border-light: #e2e8f0;
+      --accent: #0f172a;
+      --accent-blue: #2563eb;
+      --accent-blue-hover: #1d4ed8;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --warning: #b45309;
+      --warning-bg: #fef3c7;
+      --danger: #b91c1c;
+      --danger-bg: #fee2e2;
+      --info: #1d4ed8;
+      --info-bg: #dbeafe;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .app-shell {
+      width: 100%;
+      padding: 20px 28px 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Top Control Bar */
+    .top-bar {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .brand p {
+      margin: 2px 0 0 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Controls: 36px-44px height */
+    button, input, select {
+      font-family: inherit;
+      font-size: 14px;
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 0 16px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    button:hover:not(:disabled) {
+      background: var(--bg-subtle);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    button.btn-primary {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      color: #ffffff;
+    }
+
+    button.btn-primary:hover:not(:disabled) {
+      background: var(--accent-blue-hover);
+    }
+
+    button.btn-danger {
+      background: var(--danger);
+      border-color: var(--danger);
+      color: #ffffff;
+    }
+
+    button.btn-danger:hover:not(:disabled) {
+      background: #991b1b;
+    }
+
+    button.btn-success {
+      background: var(--success);
+      border-color: var(--success);
+      color: #ffffff;
+    }
+
+    button.btn-success:hover:not(:disabled) {
+      background: #166534;
+    }
+
+    input[type="text"], input[type="number"], select {
+      padding: 0 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+    }
+
+    /* Status Banner / Toast */
+    .toast {
+      width: 100%;
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      font-size: 14px;
+      font-weight: 500;
+      display: none;
+    }
+
+    .toast.visible {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .toast.info { background: var(--info-bg); border-color: #93c5fd; color: #1e3a8a; }
+    .toast.success { background: var(--success-bg); border-color: #86efac; color: #14532d; }
+    .toast.error { background: var(--danger-bg); border-color: #fca5a5; color: #7f1d1d; }
+
+    /* KPI Strip */
+    .kpi-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .kpi-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+    }
+
+    .kpi-value {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .kpi-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-VALIDATED, .badge-APPROVED, .badge-ACCEPTED, .badge-PASS {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .badge-HOLD, .badge-REJECTED, .badge-CRITICAL {
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    .badge-PUBLISHED, .badge-INFO {
+      background: var(--info-bg);
+      color: var(--info);
+    }
+
+    .badge-DRAFT, .badge-REWORK, .badge-WARNING {
+      background: var(--warning-bg);
+      color: var(--warning);
+    }
+
+    /* Main Panels */
+    .two-col-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 20px;
+    }
+
+    .panel {
+      width: 100%;
+      min-width: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .panel-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 12px;
+    }
+
+    .panel-header h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Fault Lab Checkboxes */
+    .fault-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+
+    .fault-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      background: var(--bg-page);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .fault-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .inline-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .field-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* Tables */
+    .table-wrap {
+      width: 100%;
+      min-width: 0;
+      overflow-x: auto;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    th {
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      font-weight: 700;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-primary);
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+    }
+
+    /* Lineage Diagram */
+    .lineage-canvas {
+      width: 100%;
+      min-width: 0;
+      overflow-x: auto;
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .lineage-flow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .lineage-node {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      min-width: 185px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .lineage-node.type-dataset { border-color: #2563eb; }
+    .lineage-node.type-snapshot { border-color: #0284c7; }
+    .lineage-node.type-release { border-color: #15803d; }
+    .lineage-node.type-training_run { border-color: #7c3aed; }
+    .lineage-node.type-model { border-color: #b45309; }
+    .lineage-node.type-consumer { border-color: #0f766e; }
+
+    .node-type {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    .node-id {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      word-break: break-all;
+    }
+
+    .lineage-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .diff-box {
+      background: var(--bg-page);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 14px;
+    }
+
+    .summary-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Control Bar -->
+    <header class="top-bar">
+      <div class="brand">
+        <h1>CVAT Factory X — Data Release Control Tower</h1>
+        <p>Contract Validation Gate · Deterministic Fault Lab (T1–T8) · Lineage &amp; Time Machine</p>
+      </div>
+      <div class="top-actions">
+        <button id="btn-bootstrap" class="btn-primary" onclick="bootstrapDemo()">Bootstrap Demo Dataset</button>
+        <button id="btn-benchmark" onclick="runBenchmark()">Run 8-Fault Benchmark</button>
+        <button id="btn-refresh" onclick="refreshState()">Refresh State</button>
+      </div>
+    </header>
+
+    <div id="toast" class="toast" role="status">
+      <span id="toast-msg"></span>
+      <button style="height:30px;padding:0 10px;" onclick="hideToast()">Dismiss</button>
+    </div>
+
+    <!-- KPI Strip -->
+    <section class="kpi-grid" aria-label="Key Performance Indicators">
+      <div class="kpi-card">
+        <span class="kpi-label">Fault Coverage</span>
+        <span class="kpi-value" id="kpi-coverage">--</span>
+        <span class="kpi-sub">Taxonomy T1–T8</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Critical Recall</span>
+        <span class="kpi-value" id="kpi-recall">--</span>
+        <span class="kpi-sub">Dev &amp; Held-Out Seeds</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">False Release Rate</span>
+        <span class="kpi-value" id="kpi-false-release">--</span>
+        <span class="kpi-sub">Target: 0.0%</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Restore Integrity</span>
+        <span class="kpi-value" id="kpi-restore">--</span>
+        <span class="kpi-sub">SHA-256 Content-Addressed</span>
+      </div>
+      <div class="kpi-card">
+        <span class="kpi-label">Active Release Status</span>
+        <div><span class="badge badge-DRAFT" id="kpi-status">NONE</span></div>
+        <span class="kpi-sub mono" id="kpi-release-id">No active release</span>
+      </div>
+    </section>
+
+    <!-- Fault Injection Lab + Validation Gate Output -->
+    <section class="two-col-grid">
+      <div class="panel">
+        <div class="panel-header">
+          <h2>Fault Injection Lab (T1–T8)</h2>
+          <span class="badge badge-INFO" id="fault-source-badge">Source: latest clean</span>
+        </div>
+
+        <div class="fault-grid" id="fault-checkboxes">
+          <label class="fault-item"><input type="checkbox" value="T1" checked /> T1 · Missing Image</label>
+          <label class="fault-item"><input type="checkbox" value="T2" checked /> T2 · Wrong Hash</label>
+          <label class="fault-item"><input type="checkbox" value="T3" /> T3 · Invalid Class</label>
+          <label class="fault-item"><input type="checkbox" value="T4" /> T4 · BBox Out of Bounds</label>
+          <label class="fault-item"><input type="checkbox" value="T5" /> T5 · BBox Drift</label>
+          <label class="fault-item"><input type="checkbox" value="T6" /> T6 · Class Swap</label>
+          <label class="fault-item"><input type="checkbox" value="T7" /> T7 · Scene Leak</label>
+          <label class="fault-item"><input type="checkbox" value="T8" /> T8 · Guideline Mismatch</label>
+        </div>
+
+        <div class="inline-controls">
+          <label class="field-group">
+            Source Snapshot:
+            <select id="fault-source-select"></select>
+          </label>
+          <label class="field-group">
+            Seed:
+            <input type="number" id="fault-seed" value="42" style="width: 96px;" />
+          </label>
+          <button id="btn-inject" class="btn-danger" onclick="injectFaults()">Inject Selected Faults</button>
+        </div>
+
+        <div class="diff-box" id="fault-manifest-box">
+          <strong>Fault Manifest:</strong> Run an injection to inspect deterministic fault targets &amp; ground truth.
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h2>Validation Gate Output</h2>
+          <span class="badge badge-DRAFT" id="val-status-badge">AWAITING RUN</span>
+        </div>
+
+        <div class="summary-row" id="val-summary-row">
+          <span><strong>Passed:</strong> <span id="val-passed">--</span></span>
+          <span><strong>Requires Human Review:</strong> <span id="val-human-review">--</span></span>
+          <span><strong>Critical:</strong> <span id="val-critical">0</span></span>
+          <span><strong>Warning:</strong> <span id="val-warning">0</span></span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Fault</th>
+                <th>Severity</th>
+                <th>Message</th>
+                <th>Target</th>
+              </tr>
+            </thead>
+            <tbody id="val-issues-tbody">
+              <tr><td colspan="5" style="color:var(--text-muted);">No validation issues loaded yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lineage & Model Blast Radius -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Lineage &amp; Model Blast Radius</h2>
+        <div class="inline-controls">
+          <label class="field-group">
+            Trace Node:
+            <select id="lineage-node-select" onchange="loadLineage()"></select>
+          </label>
+          <button onclick="loadLineage()">Trace Blast Radius</button>
+        </div>
+      </div>
+
+      <div class="summary-row" id="lineage-summary-row">
+        <span><strong>Nodes:</strong> <span id="lin-node-count">0</span></span>
+        <span><strong>Edges:</strong> <span id="lin-edge-count">0</span></span>
+        <span><strong>MLflow Runs:</strong> <span id="lin-mlflow-count">0</span></span>
+        <span><strong>Affected Models:</strong> <span id="lin-model-count">0</span></span>
+      </div>
+
+      <div class="lineage-canvas" id="lineage-canvas">
+        <div style="color:var(--text-muted);">Bootstrap a dataset or inject faults to view the end-to-end lineage graph (Dataset → Snapshot → Release → MLflow Run (simulated_demo) → Model).</div>
+      </div>
+    </section>
+
+    <!-- Dataset Time Machine & Release Governance -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Dataset Time Machine &amp; Release Governance</h2>
+        <div class="inline-controls">
+          <button class="btn-primary" onclick="restoreCleanSnapshot()">Restore Clean Snapshot (v2)</button>
+        </div>
+      </div>
+
+      <div class="diff-box" id="restore-diff-box">
+        <strong>Time Machine Diff (v1 / Corrupt vs Restored):</strong> Click <em>Restore Clean Snapshot (v2)</em> to verify SHA-256 integrity and compare against any corrupted snapshot.
+      </div>
+
+      <div class="two-col-grid">
+        <div>
+          <h3 style="margin:0 0 10px 0;font-size:16px;">Immutable Snapshots</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Version</th>
+                  <th>Dataset</th>
+                  <th>Digest (SHA-256)</th>
+                  <th>Images / Labels</th>
+                </tr>
+              </thead>
+              <tbody id="snapshots-tbody">
+                <tr><td colspan="4" style="color:var(--text-muted);">No snapshots recorded.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin:0 0 10px 0;font-size:16px;">Release Gate Actions</h3>
+          <div class="table-wrap" style="margin-bottom:14px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Release ID</th>
+                  <th>Version</th>
+                  <th>Status</th>
+                  <th>Approvals</th>
+                </tr>
+              </thead>
+              <tbody id="releases-tbody">
+                <tr><td colspan="4" style="color:var(--text-muted);">No releases recorded.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="inline-controls">
+            <label class="field-group">
+              Target Release:
+              <select id="gov-release-select"></select>
+            </label>
+            <input type="text" id="gov-actor" value="alice.qc" placeholder="Approver / Consumer" style="width:150px;" />
+            <button onclick="approveRelease('qc')">Approve QC</button>
+            <button onclick="approveRelease('privacy')">Approve Privacy</button>
+            <button class="btn-primary" onclick="publishRelease()">Publish</button>
+            <button class="btn-success" onclick="acceptRelease()">Consumer ACK</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    let appState = null;
+    let lastRestoreIntegrity = null;
+
+    function showToast(msg, type = "info") {
+      const el = document.getElementById("toast");
+      const msgEl = document.getElementById("toast-msg");
+      el.className = `toast visible ${type}`;
+      msgEl.textContent = msg;
+    }
+
+    function hideToast() {
+      document.getElementById("toast").className = "toast";
+    }
+
+    async function api(path, method = "GET", body = null) {
+      const opts = { method, headers: { "Content-Type": "application/json" } };
+      if (body !== null) opts.body = JSON.stringify(body);
+      const res = await fetch(path, opts);
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.detail || `HTTP ${res.status}`);
+      }
+      return data;
+    }
+
+    async function refreshState() {
+      try {
+        appState = await api("/api/state");
+        renderState();
+      } catch (err) {
+        showToast("Failed to load state: " + err.message, "error");
+      }
+    }
+
+    function renderState() {
+      if (!appState) return;
+      const bench = appState.fault_benchmark;
+      if (bench) {
+        const types = Object.keys(bench.per_type_recall || {});
+        const covered = types.filter(k => (bench.per_type_recall[k] || 0) > 0).length;
+        document.getElementById("kpi-coverage").textContent = `${covered}/${types.length || 8}`;
+        document.getElementById("kpi-recall").textContent = `${Math.round((bench.overall_critical_fault_recall || 0) * 100)}%`;
+        document.getElementById("kpi-false-release").textContent = `${Math.round((bench.false_release_rate || 0) * 100)}%`;
+      } else {
+        document.getElementById("kpi-coverage").textContent = "0/8";
+        document.getElementById("kpi-recall").textContent = "--";
+        document.getElementById("kpi-false-release").textContent = "--";
+      }
+
+      document.getElementById("kpi-restore").textContent =
+        lastRestoreIntegrity === true ? "VERIFIED" : (lastRestoreIntegrity === false ? "FAILED" : "READY");
+
+      const active = appState.active_release;
+      const statusBadge = document.getElementById("kpi-status");
+      if (active) {
+        statusBadge.textContent = active.status;
+        statusBadge.className = `badge badge-${active.status}`;
+        document.getElementById("kpi-release-id").textContent = `${active.release_id} (${active.version})`;
+      } else {
+        statusBadge.textContent = "NONE";
+        statusBadge.className = "badge badge-DRAFT";
+        document.getElementById("kpi-release-id").textContent = "No active release";
+      }
+
+      // Snapshots select & table
+      const snapSelect = document.getElementById("fault-source-select");
+      const snapTbody = document.getElementById("snapshots-tbody");
+      const snaps = appState.snapshots || [];
+      snapSelect.innerHTML = "";
+      if (snaps.length === 0) {
+        snapTbody.innerHTML = '<tr><td colspan="4" style="color:var(--text-muted);">No snapshots recorded.</td></tr>';
+      } else {
+        snapTbody.innerHTML = "";
+        snaps.forEach(s => {
+          const opt = document.createElement("option");
+          opt.value = s.snapshot_id;
+          opt.textContent = `${s.version} (${s.snapshot_id.slice(0, 10)}…)`;
+          if (!s.version.startsWith("corrupt-") && !snapSelect.value) {
+            opt.selected = true;
+          }
+          snapSelect.appendChild(opt);
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><strong>${escapeHtml(s.version)}</strong></td>
+            <td>${escapeHtml(s.dataset_name)}</td>
+            <td class="mono">${escapeHtml(s.snapshot_id.slice(0, 16))}…</td>
+            <td>${s.image_count} / ${s.label_count}</td>
+          `;
+          snapTbody.appendChild(tr);
+        });
+      }
+
+      // Releases select & table
+      const relSelect = document.getElementById("gov-release-select");
+      const relTbody = document.getElementById("releases-tbody");
+      const rels = appState.releases || [];
+      relSelect.innerHTML = "";
+      if (rels.length === 0) {
+        relTbody.innerHTML = '<tr><td colspan="4" style="color:var(--text-muted);">No releases recorded.</td></tr>';
+      } else {
+        relTbody.innerHTML = "";
+        rels.forEach(r => {
+          const opt = document.createElement("option");
+          opt.value = r.release_id;
+          opt.textContent = `${r.version} [${r.status}] — ${r.release_id}`;
+          relSelect.appendChild(opt);
+
+          const apprList = (appState.approvals && appState.approvals[r.release_id]) || [];
+          const apprSummary = apprList.map(a => `${a.role}:${a.decision}`).join(", ") || "None";
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td class="mono">${escapeHtml(r.release_id)}</td>
+            <td><strong>${escapeHtml(r.version)}</strong></td>
+            <td><span class="badge badge-${escapeHtml(r.status)}">${escapeHtml(r.status)}</span></td>
+            <td>${escapeHtml(apprSummary)}</td>
+          `;
+          relTbody.appendChild(tr);
+        });
+      }
+
+      // Lineage node select
+      const linSelect = document.getElementById("lineage-node-select");
+      const prevVal = linSelect.value;
+      linSelect.innerHTML = '<option value="all">All Recorded Edges</option>';
+      snaps.forEach(s => {
+        const opt = document.createElement("option");
+        opt.value = s.snapshot_id;
+        opt.textContent = `Snapshot: ${s.version} (${s.snapshot_id.slice(0, 10)}…)`;
+        linSelect.appendChild(opt);
+      });
+      rels.forEach(r => {
+        const opt = document.createElement("option");
+        opt.value = r.release_id;
+        opt.textContent = `Release: ${r.release_id}`;
+        linSelect.appendChild(opt);
+      });
+      if (prevVal) linSelect.value = prevVal;
+      loadLineage();
+    }
+
+    async function bootstrapDemo() {
+      showToast("Bootstrapping clean COCO250 v1 subset & MLflow lineage…", "info");
+      try {
+        const res = await api("/api/demo/bootstrap", "POST", { dataset_id: "coco250_demo", limit: 30, seed: 42 });
+        renderValidationReport(res.validation_report);
+        showToast(`Bootstrapped ${res.dataset_id} v1 (${res.snapshot.image_count} images) -> ${res.release.status}`, "success");
+        await refreshState();
+      } catch (err) {
+        showToast("Bootstrap failed: " + err.message, "error");
+      }
+    }
+
+    async function runBenchmark() {
+      showToast("Running 8-fault benchmark across dev & held-out seeds…", "info");
+      try {
+        const res = await api("/api/benchmark/run", "POST", {});
+        showToast(`Benchmark complete: Critical Recall ${Math.round(res.overall_critical_fault_recall * 100)}%, False Release ${Math.round(res.false_release_rate * 100)}%`, "success");
+        await refreshState();
+      } catch (err) {
+        showToast("Benchmark failed: " + err.message, "error");
+      }
+    }
+
+    async function injectFaults() {
+      const checked = Array.from(document.querySelectorAll("#fault-checkboxes input:checked")).map(el => el.value);
+      if (checked.length === 0) {
+        showToast("Select at least one fault type (T1–T8).", "error");
+        return;
+      }
+      const sourceDigest = document.getElementById("fault-source-select").value || "latest";
+      const seed = parseInt(document.getElementById("fault-seed").value || "42", 10);
+      showToast(`Injecting ${checked.join(", ")} (seed=${seed})…`, "info");
+      try {
+        const res = await api("/api/faults/inject", "POST", {
+          source_digest: sourceDigest,
+          fault_types: checked,
+          seed: seed,
+        });
+        renderValidationReport(res.validation_report);
+        const fm = res.fault_manifest;
+        document.getElementById("fault-manifest-box").innerHTML = `
+          <strong>Fault Manifest (${escapeHtml(fm.run_id)}):</strong>
+          Injected ${fm.faults.length} fault(s) -> Release <span class="badge badge-${escapeHtml(res.release.status)}">${escapeHtml(res.release.status)}</span>
+        `;
+        showToast(`Fault injection complete: ${res.release.release_id} -> ${res.release.status}`, "success");
+        await refreshState();
+      } catch (err) {
+        showToast("Fault injection failed: " + err.message, "error");
+      }
+    }
+
+    function renderValidationReport(report) {
+      if (!report) return;
+      const badge = document.getElementById("val-status-badge");
+      badge.textContent = report.recommended_status || "UNKNOWN";
+      badge.className = `badge badge-${report.recommended_status || "DRAFT"}`;
+      document.getElementById("val-passed").textContent = String(report.passed);
+      document.getElementById("val-human-review").textContent = String(report.requires_human_review);
+      document.getElementById("val-critical").textContent = String((report.severity_counts || {}).CRITICAL || 0);
+      document.getElementById("val-warning").textContent = String((report.severity_counts || {}).WARNING || 0);
+
+      const tbody = document.getElementById("val-issues-tbody");
+      const issues = report.issues || [];
+      if (issues.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="color:var(--success);font-weight:600;">All contract checks passed (0 issues).</td></tr>';
+        return;
+      }
+      tbody.innerHTML = "";
+      issues.forEach(iss => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td class="mono">${escapeHtml(iss.code)}</td>
+          <td><strong>${escapeHtml(iss.fault_type || "-")}</strong></td>
+          <td><span class="badge badge-${escapeHtml(iss.severity)}">${escapeHtml(iss.severity)}</span></td>
+          <td>${escapeHtml(iss.message)}</td>
+          <td class="mono">${escapeHtml(iss.file_path || iss.image_id || "-")}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function loadLineage() {
+      const nodeId = document.getElementById("lineage-node-select").value || "all";
+      try {
+        const data = await api(`/api/lineage/${encodeURIComponent(nodeId)}`);
+        const nodes = data.nodes || [];
+        const edges = data.edges || [];
+        const blast = data.blast_radius;
+
+        document.getElementById("lin-node-count").textContent = String(nodes.length);
+        document.getElementById("lin-edge-count").textContent = String(edges.length);
+        document.getElementById("lin-mlflow-count").textContent = blast
+          ? String((blast.simulated_demo_runs || []).length + (blast.actual_mlflow_runs || []).length)
+          : String(nodes.filter(n => n.type === "training_run").length);
+        document.getElementById("lin-model-count").textContent = blast
+          ? String((blast.affected_models || []).length)
+          : String(nodes.filter(n => n.type === "model").length);
+
+        const canvas = document.getElementById("lineage-canvas");
+        if (edges.length === 0 && nodes.length === 0) {
+          canvas.innerHTML = '<div style="color:var(--text-muted);">No lineage edges recorded for this selection yet.</div>';
+          return;
+        }
+
+        const nodeTypeById = {};
+        nodes.forEach(n => { nodeTypeById[n.id] = n.type || "entity"; });
+
+        const flow = document.createElement("div");
+        flow.className = "lineage-flow";
+
+        // Render ordered chain of edges cleanly
+        const renderedIds = new Set();
+        edges.forEach((edge, idx) => {
+          if (!renderedIds.has(edge.source_id)) {
+            flow.appendChild(makeNodeEl(edge.source_id, nodeTypeById[edge.source_id] || "entity"));
+            renderedIds.add(edge.source_id);
+          }
+          const arrow = document.createElement("div");
+          arrow.className = "lineage-arrow";
+          arrow.innerHTML = `<span>${escapeHtml(edge.relation)}</span><span style="font-size:18px;">→</span>`;
+          flow.appendChild(arrow);
+
+          if (!renderedIds.has(edge.target_id)) {
+            flow.appendChild(makeNodeEl(edge.target_id, nodeTypeById[edge.target_id] || "entity"));
+            renderedIds.add(edge.target_id);
+          }
+        });
+
+        canvas.innerHTML = "";
+        canvas.appendChild(flow);
+      } catch (err) {
+        // Ignore initial empty state errors
+      }
+    }
+
+    function makeNodeEl(id, type) {
+      const div = document.createElement("div");
+      div.className = `lineage-node type-${type}`;
+      const shortId = id.length > 26 ? id.slice(0, 14) + "…" + id.slice(-8) : id;
+      div.innerHTML = `
+        <span class="node-type">${escapeHtml(type)}</span>
+        <span class="node-id mono" title="${escapeHtml(id)}">${escapeHtml(shortId)}</span>
+      `;
+      return div;
+    }
+
+    async function restoreCleanSnapshot() {
+      const snaps = (appState && appState.snapshots) || [];
+      const cleanSnap = snaps.find(s => !s.version.startsWith("corrupt-"));
+      if (!cleanSnap) {
+        showToast("No clean snapshot available to restore. Bootstrap demo first.", "error");
+        return;
+      }
+      showToast("Restoring clean snapshot with SHA-256 verification…", "info");
+      try {
+        const res = await api("/api/versions/restore", "POST", {
+          snapshot_digest: cleanSnap.snapshot_id,
+          dataset_id: cleanSnap.dataset_name,
+          version_tag: "v2",
+        });
+        lastRestoreIntegrity = Boolean(res.restore_proof && res.restore_proof.restore_integrity);
+        renderValidationReport(res.validation_report);
+        const diff = res.diff;
+        const diffBox = document.getElementById("restore-diff-box");
+        if (diff) {
+          diffBox.innerHTML = `
+            <strong>Time Machine Proof:</strong> Restored digest <span class="mono">${escapeHtml(res.restore_proof.restored_digest.slice(0, 16))}…</span>
+            (Integrity: <span class="badge badge-VALIDATED">VERIFIED</span>) ·
+            Diff vs corrupt: <strong>${diff.modified_files.length}</strong> modified,
+            <strong>${diff.added_files.length}</strong> added,
+            <strong>${diff.removed_files.length}</strong> removed,
+            <strong>${diff.annotation_diffs.length}</strong> annotation delta(s).
+          `;
+        } else {
+          diffBox.innerHTML = `
+            <strong>Time Machine Proof:</strong> Restored digest <span class="mono">${escapeHtml(res.restore_proof.restored_digest.slice(0, 16))}…</span>
+            (Integrity: <span class="badge badge-VALIDATED">VERIFIED</span>, ${res.restore_proof.file_count} files).
+          `;
+        }
+        showToast(`Restored clean v2 release (${res.release.release_id}) -> ${res.release.status}`, "success");
+        await refreshState();
+      } catch (err) {
+        lastRestoreIntegrity = false;
+        showToast("Restore failed: " + err.message, "error");
+      }
+    }
+
+    async function approveRelease(approvalType) {
+      const relId = document.getElementById("gov-release-select").value;
+      const actor = document.getElementById("gov-actor").value.trim() || "reviewer";
+      if (!relId) return showToast("Select a target release first.", "error");
+      try {
+        const res = await api(`/api/releases/${encodeURIComponent(relId)}/approve`, "POST", {
+          actor,
+          approval_type: approvalType,
+          verdict: "APPROVED",
+          note: `Approved ${approvalType.toUpperCase()} via Control Tower UI`,
+        });
+        showToast(`Recorded ${approvalType.toUpperCase()} approval -> Release status: ${res.release.status}`, "success");
+        await refreshState();
+      } catch (err) {
+        showToast("Approval failed: " + err.message, "error");
+      }
+    }
+
+    async function publishRelease() {
+      const relId = document.getElementById("gov-release-select").value;
+      if (!relId) return showToast("Select a target release first.", "error");
+      try {
+        const res = await api(`/api/releases/${encodeURIComponent(relId)}/publish`, "POST");
+        showToast(`Release ${relId} -> PUBLISHED (published_is_not_accepted=${res.published_is_not_accepted})`, "success");
+        await refreshState();
+      } catch (err) {
+        showToast("Publish failed: " + err.message, "error");
+      }
+    }
+
+    async function acceptRelease() {
+      const relId = document.getElementById("gov-release-select").value;
+      const consumer = document.getElementById("gov-actor").value.trim() || "training-pipeline-v1";
+      if (!relId) return showToast("Select a target release first.", "error");
+      try {
+        const res = await api(`/api/releases/${encodeURIComponent(relId)}/accept`, "POST", {
+          consumer,
+          note: "Consumer ACK verified via Control Tower UI",
+        });
+        showToast(`Release ${relId} -> ACCEPTED by ${consumer}`, "success");
+        await refreshState();
+      } catch (err) {
+        showToast("Consumer ACK failed: " + err.message, "error");
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    refreshState();
+  </script>
+</body>
+</html>
