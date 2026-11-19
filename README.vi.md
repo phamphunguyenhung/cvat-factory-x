@@ -206,6 +206,7 @@ Hệ thống đánh giá hiệu quả toàn diện trên 4 trụ cột thay vì 
 | [**docs/PIPELINE_AND_MODULES.md**](docs/PIPELINE_AND_MODULES.md) | Chi tiết Pipeline 7 giai đoạn, 10 Modules & Quality Gate `T1`–`T8` |
 | [**docs/GUIDELINE_SSOT_WORKFLOW.md**](docs/GUIDELINE_SSOT_WORKFLOW.md) | Quy trình cập nhật Guideline SSOT liên tục & Annotator ACK (hiện trạng + Phase 2/3) |
 | [**docs/DAY10_POC_GUIDE.md**](docs/DAY10_POC_GUIDE.md) | Hướng dẫn vận hành Day 10 PoC (Load → Inject → Validate → Trace → Recover) |
+| [**docs/DAY10_POC_REPORT.md**](docs/DAY10_POC_REPORT.md) | Báo cáo tổng kết PoC Day 10, kết quả benchmark & thống kê Token Telemetry |
 | [**docs/ARCHITECTURE.md**](docs/ARCHITECTURE.md) | Kiến trúc `release_control/` & phạm vi tái sử dụng từ `existing_pipelines/` |
 | [**docs/DEMO_SCRIPT.md**](docs/DEMO_SCRIPT.md) | Kịch bản trình bày demo 5 phút |
 | [**docs/ACCEPTANCE.md**](docs/ACCEPTANCE.md) | Danh mục tiêu chí nghiệm thu Day 10 |
