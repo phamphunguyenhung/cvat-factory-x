@@ -1,0 +1,104 @@
+{
+  "release_id": "release_control_demo-rel-v2",
+  "dataset_name": "lab250",
+  "version": "v2",
+  "status": "VALIDATED",
+  "snapshot": {
+    "snapshot_id": "6163c1a5a14363802cb3f24b75148ff0a55283a10f5b939a09b73789c359a34f",
+    "dataset_name": "lab250",
+    "version": "v2",
+    "source_path": "D:\\06-Learning\\AIA-VINGROUP\\learning\\day10\\projects\\artifacts\\release_control_demo\\working\\restored_v2",
+    "snapshot_path": "D:\\06-Learning\\AIA-VINGROUP\\learning\\day10\\projects\\artifacts\\release_control_demo\\snapshots\\6163c1a5a14363802cb3f24b75148ff0a55283a10f5b939a09b73789c359a34f",
+    "manifest_sha256": "806b1e0f6013fbcb922f5bf984cb959d2d83302565c967d5731b18f3b0f6b941",
+    "image_count": 50,
+    "label_count": 50,
+    "created_at": "2026-11-19T05:00:49.533005Z",
+    "metadata": {
+      "digest": "6163c1a5a14363802cb3f24b75148ff0a55283a10f5b939a09b73789c359a34f",
+      "parent_digest": "6163c1a5a14363802cb3f24b75148ff0a55283a10f5b939a09b73789c359a34f",
+      "nfiles": 159,
+      "size": 8667148,
+      "dvc_path": "D:\\06-Learning\\AIA-VINGROUP\\learning\\day10\\projects\\artifacts\\release_control_demo\\snapshots\\6163c1a5a14363802cb3f24b75148ff0a55283a10f5b939a09b73789c359a34f\\dataset.dvc"
+    }
+  },
+  "validation_summary": {
+    "contract_version": "1.0.0",
+    "snapshot_digest": "806b1e0f6013fbcb922f5bf984cb959d2d83302565c967d5731b18f3b0f6b941",
+    "validation_report_id": "val-2ca0e04f0b03",
+    "report_id": "val-2ca0e04f0b03",
+    "passed": true,
+    "critical_count": 0,
+    "warning_count": 0,
+    "info_count": 0,
+    "requires_human_review": false,
+    "metrics": {
+      "counts_by_fault_type": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0,
+        "T6": 0,
+        "T7": 0,
+        "T8": 0,
+        "SCHEMA": 0,
+        "PRIVACY": 0
+      },
+      "recommended_status": "VALIDATED",
+      "requires_human_review": false
+    },
+    "checked_at": "2026-11-19T05:00:56.626021+00:00"
+  },
+  "approvals": [],
+  "consumer_acks": [],
+  "lineage": [
+    {
+      "edge_id": "a7326f40-7325-4791-8c2c-385e952c2b4d",
+      "source_id": "6163c1a5a14363802cb3f24b75148ff0a55283a10f5b939a09b73789c359a34f",
+      "target_id": "release_control_demo-rel-v2",
+      "relation": "released_as",
+      "actor": "system",
+      "created_at": "2026-11-19T05:00:56.619614Z",
+      "metadata": {
+        "version": "v2",
+        "contract_version": "1.0.0",
+        "source_type": "snapshot",
+        "target_type": "release",
+        "evidence_status": "verified"
+      }
+    },
+    {
+      "edge_id": "0d2a1cac-7bc5-42b6-b26c-a5c461ab5ff3",
+      "source_id": "6163c1a5a14363802cb3f24b75148ff0a55283a10f5b939a09b73789c359a34f",
+      "target_id": "release_control_demo-rel-v1",
+      "relation": "released_as",
+      "actor": "system",
+      "created_at": "2026-11-19T05:00:49.716754Z",
+      "metadata": {
+        "version": "v1",
+        "contract_version": "1.0.0",
+        "source_type": "snapshot",
+        "target_type": "release",
+        "evidence_status": "verified"
+      }
+    },
+    {
+      "edge_id": "676f8ec9-6486-46ba-9c45-102e2047cd9f",
+      "source_id": "6163c1a5a14363802cb3f24b75148ff0a55283a10f5b939a09b73789c359a34f",
+      "target_id": "model:demo_detector",
+      "relation": "trained_into",
+      "actor": "system",
+      "created_at": "2026-11-19T05:00:50.896577Z",
+      "metadata": {
+        "simulated": true,
+        "note": "canh gia lap de demo",
+        "source_type": "snapshot",
+        "target_type": "model",
+        "evidence_status": "unverified"
+      }
+    }
+  ],
+  "published_is_not_accepted": true,
+  "issued_at": "2026-11-19T05:01:42.046979Z",
+  "passport_sha256": "1b664ab18ebf4a337c0c78fd3fc51ce00c5894bcaabd2bc0543bc4d121eeb910"
+}

@@ -1,0 +1,32 @@
+{
+  "members": [
+    "Trần Thành Hùng",
+    "Bùi Văn Thịnh",
+    "Nguyễn Xuân Việt",
+    "Phạm Phú Nguyễn Hưng",
+    "Trần Nguyễn Phi Long"
+  ],
+  "exclude_reviewers": [],
+  "jobs": [
+    {
+      "id": 1972,
+      "annotator": "Trần Thành Hùng"
+    },
+    {
+      "id": 1973,
+      "annotator": "Bùi Văn Thịnh"
+    },
+    {
+      "id": 1974,
+      "annotator": "Nguyễn Xuân Việt"
+    },
+    {
+      "id": 1975,
+      "annotator": "Phạm Phú Nguyễn Hưng"
+    },
+    {
+      "id": 1976,
+      "annotator": "Trần Nguyễn Phi Long"
+    }
+  ]
+}

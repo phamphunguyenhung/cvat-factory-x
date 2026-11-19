@@ -1,0 +1,1458 @@
+{
+ "0": [
+  {
+   "case": "Miệng mở (nói, ngáp, cười)",
+   "uncertain": false
+  },
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "1": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Điện thoại áp tai/gần mặt",
+   "uncertain": false
+  }
+ ],
+ "2": [
+  {
+   "case": "Ngửa mặt lên",
+   "uncertain": false
+  },
+  {
+   "case": "Tay che mặt / sát mặt",
+   "uncertain": false
+  },
+  {
+   "case": "Đầu sát/vượt mép ảnh (khả năng điểm O)",
+   "uncertain": false
+  }
+ ],
+ "3": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "4": [
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "5": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "6": [
+  {
+   "case": "Kính râm hoặc tròng tối",
+   "uncertain": false
+  }
+ ],
+ "7": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": true
+  },
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "8": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Điện thoại áp tai/gần mặt",
+   "uncertain": false
+  }
+ ],
+ "9": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Điện thoại áp tai/gần mặt",
+   "uncertain": false
+  },
+  {
+   "case": "Tóc dài che mày/mắt/má",
+   "uncertain": false
+  }
+ ],
+ "10": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "11": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Sách, báo, laptop che mặt",
+   "uncertain": false
+  }
+ ],
+ "12": [],
+ "13": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "14": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "15": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "16": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "17": [
+  {
+   "case": "Mắt nhắm",
+   "uncertain": false
+  }
+ ],
+ "18": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "19": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Chai, đồ ăn, đồ uống sát miệng",
+   "uncertain": false
+  }
+ ],
+ "20": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Đầu sát/vượt mép ảnh (khả năng điểm O)",
+   "uncertain": false
+  }
+ ],
+ "21": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "22": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Điện thoại áp tai/gần mặt",
+   "uncertain": false
+  }
+ ],
+ "23": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "24": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "25": [
+  {
+   "case": "Mũ lưỡi trai, mũ len",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "26": [],
+ "27": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  },
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  }
+ ],
+ "28": [
+  {
+   "case": "Ngửa mặt lên",
+   "uncertain": false
+  }
+ ],
+ "29": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "30": [
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "31": [
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  },
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  }
+ ],
+ "32": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "33": [],
+ "34": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Sách, báo, laptop che mặt",
+   "uncertain": false
+  }
+ ],
+ "35": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Đầu sát/vượt mép ảnh (khả năng điểm O)",
+   "uncertain": false
+  }
+ ],
+ "36": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "37": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Sách, báo, laptop che mặt",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "38": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "39": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Mắt nhắm",
+   "uncertain": false
+  }
+ ],
+ "40": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Mắt nhắm",
+   "uncertain": false
+  }
+ ],
+ "41": [],
+ "42": [],
+ "43": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "44": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Sách, báo, laptop che mặt",
+   "uncertain": false
+  }
+ ],
+ "45": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính râm hoặc tròng tối",
+   "uncertain": false
+  }
+ ],
+ "46": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Tóc dài che mày/mắt/má",
+   "uncertain": false
+  },
+  {
+   "case": "Đầu sát/vượt mép ảnh (khả năng điểm O)",
+   "uncertain": false
+  }
+ ],
+ "47": [
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "48": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "49": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "50": [
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "51": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  }
+ ],
+ "52": [
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "53": [],
+ "54": [
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Chai, đồ ăn, đồ uống sát miệng",
+   "uncertain": false
+  }
+ ],
+ "55": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Chai, đồ ăn, đồ uống sát miệng",
+   "uncertain": false
+  }
+ ],
+ "56": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "57": [
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  },
+  {
+   "case": "Ngửa mặt lên",
+   "uncertain": false
+  }
+ ],
+ "58": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Sách, báo, laptop che mặt",
+   "uncertain": false
+  }
+ ],
+ "59": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Chai, đồ ăn, đồ uống sát miệng",
+   "uncertain": false
+  }
+ ],
+ "60": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "61": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "62": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  }
+ ],
+ "63": [],
+ "64": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Ba lô che đầu",
+   "uncertain": false
+  }
+ ],
+ "65": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "66": [
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  },
+  {
+   "case": "Ngửa mặt lên",
+   "uncertain": false
+  }
+ ],
+ "67": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Sách, báo, laptop che mặt",
+   "uncertain": false
+  }
+ ],
+ "68": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Đầu sát/vượt mép ảnh (khả năng điểm O)",
+   "uncertain": false
+  }
+ ],
+ "69": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "70": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "71": [],
+ "72": [],
+ "73": [
+  {
+   "case": "Điện thoại áp tai/gần mặt",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "74": [
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "75": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Tay che mặt / sát mặt",
+   "uncertain": false
+  }
+ ],
+ "76": [
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "77": [
+  {
+   "case": "Sách, báo, laptop che mặt",
+   "uncertain": false
+  }
+ ],
+ "78": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "79": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "80": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "81": [
+  {
+   "case": "Mũ lưỡi trai, mũ len",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "82": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "83": [],
+ "84": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "85": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "86": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "87": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "88": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "89": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "90": [],
+ "91": [],
+ "92": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Sách, báo, laptop che mặt",
+   "uncertain": false
+  },
+  {
+   "case": "Đầu sát/vượt mép ảnh (khả năng điểm O)",
+   "uncertain": false
+  }
+ ],
+ "93": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "94": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "95": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "96": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Ngửa mặt lên",
+   "uncertain": false
+  },
+  {
+   "case": "Chai, đồ ăn, đồ uống sát miệng",
+   "uncertain": false
+  }
+ ],
+ "97": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Ngửa mặt lên",
+   "uncertain": false
+  }
+ ],
+ "98": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "99": [
+  {
+   "case": "Mắt nhắm",
+   "uncertain": false
+  },
+  {
+   "case": "Miệng mở (nói, ngáp, cười)",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "100": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  },
+  {
+   "case": "Ngửa mặt lên",
+   "uncertain": false
+  }
+ ],
+ "101": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "102": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Tay che mặt / sát mặt",
+   "uncertain": false
+  }
+ ],
+ "103": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Điện thoại áp tai/gần mặt",
+   "uncertain": false
+  },
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "104": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "105": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  },
+  {
+   "case": "Ngửa mặt lên",
+   "uncertain": false
+  }
+ ],
+ "106": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính râm hoặc tròng tối",
+   "uncertain": false
+  }
+ ],
+ "107": [
+  {
+   "case": "Tay che mặt / sát mặt",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "108": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "109": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  }
+ ],
+ "110": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Đầu sát/vượt mép ảnh (khả năng điểm O)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "111": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt rất nhỏ trong ảnh",
+   "uncertain": false
+  }
+ ],
+ "112": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Mắt nhắm",
+   "uncertain": true
+  },
+  {
+   "case": "Ngửa mặt lên",
+   "uncertain": false
+  }
+ ],
+ "113": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Tay che mặt / sát mặt",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "114": [
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  }
+ ],
+ "115": [
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Tóc dài che mày/mắt/má",
+   "uncertain": false
+  }
+ ],
+ "116": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Kính râm hoặc tròng tối",
+   "uncertain": false
+  }
+ ],
+ "117": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Điện thoại áp tai/gần mặt",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "118": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  },
+  {
+   "case": "Ngửa mặt lên",
+   "uncertain": false
+  }
+ ],
+ "119": [
+  {
+   "case": "Miệng mở (nói, ngáp, cười)",
+   "uncertain": false
+  }
+ ],
+ "120": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Miệng mở (nói, ngáp, cười)",
+   "uncertain": false
+  }
+ ],
+ "121": [
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  }
+ ],
+ "122": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "123": [
+  {
+   "case": "Mũ lưỡi trai, mũ len",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "124": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  }
+ ],
+ "125": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Tóc dài che mày/mắt/má",
+   "uncertain": true
+  }
+ ],
+ "126": [
+  {
+   "case": "Tay che mặt / sát mặt",
+   "uncertain": false
+  }
+ ],
+ "127": [
+  {
+   "case": "Mũ lưỡi trai, mũ len",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "128": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "129": [
+  {
+   "case": "Tay che mặt / sát mặt",
+   "uncertain": false
+  }
+ ],
+ "130": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  }
+ ],
+ "131": [
+  {
+   "case": "Điện thoại áp tai/gần mặt",
+   "uncertain": false
+  }
+ ],
+ "132": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  }
+ ],
+ "133": [
+  {
+   "case": "Miệng mở (nói, ngáp, cười)",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "134": [
+  {
+   "case": "Miệng mở (nói, ngáp, cười)",
+   "uncertain": true
+  }
+ ],
+ "135": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Tay che mặt / sát mặt",
+   "uncertain": false
+  }
+ ],
+ "136": [
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "137": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "138": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Cúi mặt nhìn xuống (điện thoại, giấy, đồ vật)",
+   "uncertain": false
+  },
+  {
+   "case": "Điện thoại áp tai/gần mặt",
+   "uncertain": false
+  }
+ ],
+ "139": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Khăn trùm đầu",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "140": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  }
+ ],
+ "141": [
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "142": [
+  {
+   "case": "Ảnh IR xám ban đêm (tối)",
+   "uncertain": false
+  },
+  {
+   "case": "Fisheye, người nằm ngang/xoay ~90° (nguy cơ nhầm trái/phải)",
+   "uncertain": false
+  },
+  {
+   "case": "Đầu sát/vượt mép ảnh (khả năng điểm O)",
+   "uncertain": false
+  }
+ ],
+ "143": [
+  {
+   "case": "Tay che mặt / sát mặt",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "144": [
+  {
+   "case": "Kính râm hoặc tròng tối",
+   "uncertain": false
+  },
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  }
+ ],
+ "145": [
+  {
+   "case": "Râu, ria che viền môi",
+   "uncertain": false
+  },
+  {
+   "case": "Hành khách nhìn thấy (không gán)",
+   "uncertain": false
+  }
+ ],
+ "146": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  }
+ ],
+ "147": [
+  {
+   "case": "Kính râm hoặc tròng tối",
+   "uncertain": false
+  },
+  {
+   "case": "Miệng mở (nói, ngáp, cười)",
+   "uncertain": false
+  }
+ ],
+ "148": [
+  {
+   "case": "Kính trong (có phản sáng)",
+   "uncertain": false
+  },
+  {
+   "case": "Mặt nghiêng/profile mạnh",
+   "uncertain": false
+  },
+  {
+   "case": "Sách, báo, laptop che mặt",
+   "uncertain": false
+  }
+ ],
+ "149": [
+  {
+   "case": "Tay che mặt / sát mặt",
+   "uncertain": false
+  }
+ ]
+}

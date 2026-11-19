@@ -1,0 +1,55 @@
+# Quy uoc chung dang may doc (nguon: docs/QUY_UOC_VE_CHUNG.md; uu tien: quy uoc nguoi dung > So tay W1 > mac dinh).
+# Job co the ghi de tung truong trong config/rulesets/jobs/<job>.yaml (deep-merge).
+continuity: none          # none | video  (mac dinh none: frame KHONG lien tuc)
+keyframe_every: null      # chi dung khi continuity=video (mac dinh 10 khi bat video)
+video_keyframe_every: 10
+occluded_threshold: 0.30  # dien tich bi che >= 30% -> bat occluded (mac dinh, chinh duoc)
+truncated_threshold: 0.02
+frame_budget_s: 10        # ngan sach moi frame (model local)
+groups:
+  object: [pedestrian, rider, car, truck, bus, train, motorcycle, bicycle, "traffic light", "traffic sign"]
+  stuff: [road, sidewalk, building, wall, fence, vegetation, terrain, sky]
+  pole: [pole]
+  lane: ["lane/single white", "lane/single yellow", "lane/double white", "lane/double yellow", "lane/single other", "lane/double other"]
+  crosswalk: ["lane/crosswalk"]
+  curb: ["lane/road curb"]
+  area: ["area/direct", "area/alternative"]
+shape_by_group:
+  object: rectangle
+  stuff: polygon
+  pole: polygon          # hinh chu nhat hep
+  lane: polygon          # polygon rat hep (KHAC So tay: polyline)
+  crosswalk: polygon     # 4-6 diem
+  curb: polygon          # hep theo mep bo via
+  area: polygon
+z_order:                  # theo cach nguoi dung ve o frame 71 job 285 (14/11/2026)
+  road: -1
+  sidewalk: -7
+  area/alternative: 0
+  area/direct: 0
+  lane: 0                 # moi label lane/*
+  pole: -2
+  object: 0
+  # nen khac duoi road, sky xa nhat
+  other_stuff: -8
+  sky: -9
+attributes:
+  object: [occluded, truncated]   # chi 10 label vat the co 2 checkbox nay
+aliases:                          # trung nghia -> ban dung cho job BBox/polygon (co dau cach)
+  person: pedestrian
+  traffic_light: "traffic light"
+  traffic_sign: "traffic sign"
+max_vertices:
+  pole: 8
+  crosswalk: 6
+decision:
+  vlm:
+    enabled: false            # mac dinh TAT; bat -> backend duoc chon ben duoi chi phan xu ngu nghia cho FLAG_REVIEW
+    backend: claude_session   # claude_session | ollama
+    ollama:
+      url: http://localhost:11434
+      model: ""               # phai da co san trong ollama (khong tu tai); rong -> FLAG_REVIEW
+      timeout_s: 20
+  policy:
+    min_severity: error
+    not_in_road_max_cut: 0.5

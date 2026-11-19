@@ -1,0 +1,3 @@
+host: http://localhost:8080
+org: ''
+# PAT: bien moi truong CVAT_PAT hoac cvat/.env (gitignored)

@@ -1,0 +1,29 @@
+{
+  "job_id": 1975,
+  "timestamp": "20261118_143504",
+  "backup_file": "D:\\06-Learning\\AIA-VINGROUP\\learning\\cvat\\week02\\task473-face\\job1975-face50\\backups\\before_autolabel_sync_20261118_143504.json",
+  "updated_ids": [
+    1320931,
+    1320926,
+    1320929,
+    1320981,
+    1320995,
+    1320994,
+    1320989,
+    1321010,
+    1321012,
+    1321011,
+    1321030
+  ],
+  "created_ids": [],
+  "eligible_frames": [
+    90,
+    101,
+    107,
+    112,
+    114
+  ],
+  "readback_mismatches": 0,
+  "before_hash": "d6cbf6daac63277f",
+  "after_hash": "782c132452d95903"
+}

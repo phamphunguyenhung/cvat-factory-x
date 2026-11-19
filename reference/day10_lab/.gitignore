@@ -1,0 +1,10 @@
+__pycache__/
+.DS_Store
+*.py[cod]
+.data_cache/
+/data_source
+/runs
+/grading_runs/
+*.zip
+/hidden
+/delivery

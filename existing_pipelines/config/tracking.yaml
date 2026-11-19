@@ -1,0 +1,5 @@
+tracking:
+  trackers: [bytetrack, botsort, tracktrack, ocsort, deepocsort, fasttrack]
+  people: 5
+  keyframe: {tol_px: 4.0, max_gap: 5, min_len: 10}
+  reid: {model: osnet_x0_25, mode: on_ambiguous_only}

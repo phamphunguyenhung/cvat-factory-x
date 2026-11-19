@@ -1,0 +1,51 @@
+"""Core interfaces and domain models for CVAT Annotation Factory."""
+from __future__ import annotations
+
+from cvat_tools.factory.core.adapter import AdapterRegistry, AnnotationAdapter
+from cvat_tools.factory.core.models import (
+    AdapterContext,
+    EvidencePacket,
+    ImageInput,
+    LabelSpec,
+    ModelSelection,
+    PreprocessedBatch,
+    Proposal,
+    Provenance,
+    QualityVerdict,
+    RawPrediction,
+    RevisionStage,
+    RunState,
+    RunStatus,
+    SkeletonKeypointSpec,
+    SkeletonSchema,
+    TaskKind,
+    TaskSchema,
+    ValidationIssue,
+    ValidationReport,
+    utc_now_iso,
+)
+
+__all__ = [
+    "AdapterContext",
+    "AdapterRegistry",
+    "AnnotationAdapter",
+    "EvidencePacket",
+    "ImageInput",
+    "LabelSpec",
+    "ModelSelection",
+    "PreprocessedBatch",
+    "Proposal",
+    "Provenance",
+    "QualityVerdict",
+    "RawPrediction",
+    "RevisionStage",
+    "RunState",
+    "RunStatus",
+    "SkeletonKeypointSpec",
+    "SkeletonSchema",
+    "TaskKind",
+    "TaskSchema",
+    "ValidationIssue",
+    "ValidationReport",
+    "utc_now_iso",
+]

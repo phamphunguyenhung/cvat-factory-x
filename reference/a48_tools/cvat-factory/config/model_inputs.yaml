@@ -1,0 +1,91 @@
+# INPUT CONTRACT (nguoi dung chot 14/11/2026): moi model khai bao do phan giai / ti le huan luyen; frame phai
+# resize/chuan hoa dung roi anh xa NGUOC ve toa do anh goc (cvat_tools.segmentation.inputspec).
+# Model khong co muc o day -> prepare_input RAISE (khong chay).
+#
+# `source` ghi nguon tung gia tri: hf_config = doc tu preprocessor_config.json/config.json trong HF cache (test doi chieu),
+# model_name = suy tu ten checkpoint, paper = tu bai bao/model card (KHONG nam trong config), unverified = chua co file xac nhan.
+# `policy` = chinh sach tien xu ly MAC DINH (sau benchmark scripts/seg_input_bench.py, do tren 20 frame job 285).
+# `policy.enhance`: none | gamma | clahe | gamma_clahe, chi ap dung cho frame toi (mean gray < dark_thresh).
+
+defaults:
+  dark_thresh: 70          # gray mean < 70 = toi (cung nguong sang/dem cua du an)
+  enhance_params:
+    gamma_target: 110      # gamma tu dong: dua mean sang ve ~110
+    gamma_min: 0.45        # gamma >= 0.45 (khong khuech dai nhieu qua)
+    clahe_clip: 2.0
+    clahe_grid: 8
+
+pipeline_budget_s:         # TONG <= 10 s/frame (model local, process nap san, chua tinh load)
+  total: 10.0
+  road_sky_model: 5.0      # 1 model nen chinh (b2 / b5 / m2f)
+  lane_model: 0.8
+  yolo_tile: 2.0           # YOLO det tile cho vat the nho
+  geometry_rules: 0.7
+  sharpen: 0.8
+  io_slack: 0.7
+
+models:
+  b2:
+    kind: seg
+    backend: onnx
+    ref: Xenova/segformer-b2-finetuned-cityscapes-1024-1024 (tools/cvat-seg-copilot/models/segformer_b2_cityscapes.onnx)
+    train: {crop: [1024, 1024], dataset: Cityscapes (anh goc 2048x1024), source: model_name}
+    norm: {mean: [0.485, 0.456, 0.406], std: [0.229, 0.224, 0.225], source: unverified (Xenova khong co trong cache; trung ImageNet nhu nvidia B5)}
+    multiple: 32
+    resize: keep_ratio
+    classes: cityscapes19
+    policy: {long_side: 1024, enhance: none}
+  b5:
+    kind: seg
+    backend: torch
+    ref: nvidia/segformer-b5-finetuned-cityscapes-1024-1024
+    train: {crop: [1024, 1024], dataset: Cityscapes, source: model_name}
+    hf_preprocessor: {size: 1024, note: "HF AutoImageProcessor ep VUONG 1024x1024 -> keo doc 1.8x voi frame 16:9: SAI so voi luc train, khong dung"}
+    norm: {mean: [0.485, 0.456, 0.406], std: [0.229, 0.224, 0.225], source: hf_config}
+    multiple: 32
+    resize: keep_ratio
+    classes: cityscapes19
+    policy: {long_side: 1024, enhance: none}
+  m2f:
+    kind: seg
+    backend: torch
+    ref: facebook/mask2former-swin-large-cityscapes-semantic
+    train: {crop: [512, 1024], dataset: Cityscapes, source: paper (Mask2Former Cityscapes, crop 512x1024; KHONG co trong config)}
+    hf_preprocessor: {size: [384, 384], size_divisor: 32, note: "384x384 = do phan giai pretrain backbone Swin, KHONG phai do phan giai suy luan; ep vuong lam M2F thap gia"}
+    norm: {mean: [0.485, 0.456, 0.406], std: [0.229, 0.224, 0.225], source: hf_config}
+    multiple: 32
+    resize: keep_ratio
+    classes: cityscapes19
+    output: semantic = softmax(class)[:, :-1] x sigmoid(mask), upsample ve HxW roi moi argmax
+    policy: {long_side: 1024, enhance: none}
+  lane:
+    kind: seg
+    backend: torch
+    ref: 8bits-ai/SegFormer-Lane-Marking
+    train: {image_size: 224, source: hf_config (config.image_size=224; khong co preprocessor_config.json)}
+    norm: {mean: [0.485, 0.456, 0.406], std: [0.229, 0.224, 0.225], source: unverified (repo khong co preprocessor_config.json; mac dinh SegformerImageProcessor)}
+    multiple: 32
+    resize: keep_ratio_short      # canh NGAN = short_side, canh dai theo ti le (boi 32)
+    classes: lane_binary          # class 1 = son
+    policy: {short_side: 224, enhance: none}
+  yolo26l: &yolo
+    kind: det
+    backend: ultralytics
+    ref: cvat/models/checkpoints/yolo26l.pt
+    train: {imgsz: 640, source: checkpoint (model.overrides.imgsz=640)}
+    norm: {mean: null, std: null, scale: 255, source: ultralytics RGB/255, khong mean/std}
+    multiple: 32               # stride 8/16/32 -> boi 32
+    resize: letterbox          # giu ti le, pad 114 toi boi so 32 (rect)
+    pad_value: 114
+    classes: coco80
+    policy: {long_side: 640, enhance: none}
+  yolo26s:
+    <<: *yolo
+    ref: cvat/models/checkpoints/yolo26s.pt
+  yolo26n:
+    <<: *yolo
+    ref: cvat/models/checkpoints/yolo26n.pt
+  yolo26s-seg:
+    <<: *yolo
+    kind: seg_instance
+    ref: tools/cvat-seg-copilot/yolo26s-seg.pt

@@ -1,0 +1,184 @@
+{
+  "job_id": 1623,
+  "timestamp": "20261118_105233",
+  "backup_file": "D:\\06-Learning\\AIA-VINGROUP\\learning\\cvat\\week02\\task402-pose\\job1623-pose17\\backups\\before_sync_20261118_105233.json",
+  "updated_ids": [
+    1319662,
+    1319663,
+    1320580,
+    1320583,
+    1319664,
+    1319665,
+    1319666,
+    1319667,
+    1320587,
+    1320588,
+    1319668,
+    1319669,
+    1319671,
+    1320595
+  ],
+  "created_ids": [
+    1431477,
+    1431478
+  ],
+  "selected_summary": [
+    {
+      "frame_index": 91,
+      "action": "update",
+      "shape_id": 1319662,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 14: Q+O -> O (P17-G11)",
+        "kp 16: Q+O -> O (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 92,
+      "action": "update",
+      "shape_id": 1319663,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 10: Q+O -> O (P17-G11)",
+        "kp 11: Q+O -> O (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 93,
+      "action": "update",
+      "shape_id": 1320580,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "skeleton.occluded: True -> False (P17-G12)",
+        "kp 2: Q+O -> Q (P17-G11)",
+        "kp 16: Q+O -> O (P17-G11)",
+        "kp 17: Q+O -> O (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 96,
+      "action": "update",
+      "shape_id": 1320583,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 14: Q+O -> O (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 97,
+      "action": "update",
+      "shape_id": 1319664,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 16: Q+O -> O (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 98,
+      "action": "update",
+      "shape_id": 1319665,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 4: Q+O -> Q (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 100,
+      "action": "create",
+      "shape_id": null,
+      "review_tier": "AI_DRAFT_FOR_REVIEW",
+      "changes": [
+        "Create missing skeleton from person17_auto_20261116_195536.json"
+      ]
+    },
+    {
+      "frame_index": 103,
+      "action": "update",
+      "shape_id": 1319666,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 4: O -> Q (in-frame face/torso, P17-G15)"
+      ]
+    },
+    {
+      "frame_index": 104,
+      "action": "update",
+      "shape_id": 1319667,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 4: Q+O -> Q (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 105,
+      "action": "update",
+      "shape_id": 1320587,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 4: Q+O -> Q (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 106,
+      "action": "update",
+      "shape_id": 1320588,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 3: O -> Q (in-frame face/torso, P17-G15)",
+        "kp 5: Q+O -> Q (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 109,
+      "action": "update",
+      "shape_id": 1319668,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 16: Q+O -> O (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 110,
+      "action": "update",
+      "shape_id": 1319669,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 16: Q+O -> O (P17-G11)",
+        "kp 17: Q+O -> O (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 116,
+      "action": "update",
+      "shape_id": 1319671,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 4: Q+O -> Q (P17-G11)",
+        "kp 8: Q+O -> O (P17-G11)",
+        "kp 10: Q+O -> O (P17-G11)",
+        "kp 16: Q+O -> O (P17-G11)",
+        "kp 17: Q+O -> O (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 117,
+      "action": "update",
+      "shape_id": 1320595,
+      "review_tier": "RULE_FIX_READY",
+      "changes": [
+        "kp 4: Q+O -> Q (P17-G11)"
+      ]
+    },
+    {
+      "frame_index": 118,
+      "action": "create",
+      "shape_id": null,
+      "review_tier": "AI_DRAFT_FOR_REVIEW",
+      "changes": [
+        "Create missing skeleton from person17_auto_20261116_195536.json"
+      ]
+    }
+  ],
+  "before_count": 28,
+  "after_count": 30
+}

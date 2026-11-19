@@ -1,0 +1,35 @@
+{
+ "task": 473,
+ "items": [
+  {
+   "job": 1975,
+   "annotator": "Phạm Phú Nguyễn Hưng",
+   "reviewer": "Trần Nguyễn Phi Long",
+   "reviewer_id": 234,
+   "before": {
+    "stage": "validation",
+    "state": "completed",
+    "assignee": 245
+   },
+   "after": {
+    "stage": "validation",
+    "assignee": 234
+   }
+  },
+  {
+   "job": 1976,
+   "annotator": "Trần Nguyễn Phi Long",
+   "reviewer": "Trần Thành Hùng",
+   "reviewer_id": 244,
+   "before": {
+    "stage": "validation",
+    "state": "new",
+    "assignee": 234
+   },
+   "after": {
+    "stage": "validation",
+    "assignee": 244
+   }
+  }
+ ]
+}

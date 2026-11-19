@@ -1,0 +1,15 @@
+# Profile CPU-first. Gia tri chot sau khi doi chieu data/benchmarks/*.csv (xem docs/CPU_OPTIMIZATION.md).
+# limits: gioi han tai nguyen cau hinh duoc (threads = so luong torch/ORT/OpenVINO, ram_mb = canh bao khi peak vuot).
+profiles:
+  fast:
+    detector: {model: yolo26n, backend: onnx, imgsz: 640, conf: 0.25}   # onnx = pytorch ~56ms, openvino cham hon cho n (bench sach)
+    tracker: {name: bytetrack, reid: false}
+    limits: {threads: 4, workers: 1, ram_mb: 2500}
+  balanced:
+    detector: {model: yolo26s, backend: openvino, imgsz: 640, conf: 0.25}   # 960 chi khi benchmark chung minh loi ich
+    tracker: {name: tracktrack, reid: false}
+    limits: {threads: 6, workers: 1, ram_mb: 3500}
+  quality:
+    detector: {model: yolo26s, backend: openvino, imgsz: 960, conf: 0.2, adaptive: {hard_frames_model: yolo26l, hard_imgsz: 1280}}
+    tracker: {name: tracktrack, reid: on_ambiguous_only}
+    limits: {threads: 6, workers: 1, ram_mb: 6000}

@@ -1,0 +1,25 @@
+# CPU-safe / Colab-ready YOLO fine-tuning hyperparameters for CVAT Job 285.
+# Usage: python scripts/train_from_cvat.py --job 285 --train --model yolo26s.pt
+
+base_model: yolo26s.pt   # Use yolo26l.pt on GPU/Colab for higher recall
+val_ratio: 0.2
+seed: 42
+
+# Core Ultralytics training hyperparameters
+imgsz: 960
+epochs: 50
+batch: 4
+patience: 15
+workers: 0               # Safe for Windows/CPU multiprocessing
+
+# Augmentation tuned for day/night traffic robustness
+mosaic: 0.5
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4               # Night / low-light brightness jitter
+fliplr: 0.5
+scale: 0.5
+
+# Output location
+project: data/training
+name: job285_yolo

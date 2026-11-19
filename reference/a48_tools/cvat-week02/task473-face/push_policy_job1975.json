@@ -1,0 +1,5 @@
+{
+ "skip_frames": [106],
+ "skip_reason": "f106: IR fisheye nam ngang, xoay ~90 do, template khong dung -> ve tay",
+ "q_labels": {"96": ["moingoai", "moitrong"], "102": ["mattrai", "matphai"], "107": ["longmaytrai", "longmayphai"]}
+}

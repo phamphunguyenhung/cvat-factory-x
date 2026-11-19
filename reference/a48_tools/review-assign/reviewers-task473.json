@@ -1,0 +1,27 @@
+[
+  {
+    "job_id": 1972,
+    "annotator": "Trần Thành Hùng",
+    "reviewer": "Bùi Văn Thịnh"
+  },
+  {
+    "job_id": 1973,
+    "annotator": "Bùi Văn Thịnh",
+    "reviewer": "Nguyễn Xuân Việt"
+  },
+  {
+    "job_id": 1974,
+    "annotator": "Nguyễn Xuân Việt",
+    "reviewer": "Phạm Phú Nguyễn Hưng"
+  },
+  {
+    "job_id": 1975,
+    "annotator": "Phạm Phú Nguyễn Hưng",
+    "reviewer": "Trần Nguyễn Phi Long"
+  },
+  {
+    "job_id": 1976,
+    "annotator": "Trần Nguyễn Phi Long",
+    "reviewer": "Trần Thành Hùng"
+  }
+]

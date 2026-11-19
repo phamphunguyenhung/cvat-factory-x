@@ -1,0 +1,50 @@
+version: "1.0.0"
+
+geometry:
+  normalized_coord_min: 0.0
+  normalized_coord_max: 1.0
+  min_box_width: 0.0001
+  min_box_height: 0.0001
+  allow_edge_touch: true
+  roundtrip_tolerance:
+    iou_min: 0.99
+    bbox_l1_max: 0.005
+
+validation:
+  max_critical_issues: 0
+  max_warning_issues: 50
+  fail_on_missing_image: true
+  fail_on_hash_mismatch: true
+  fail_on_invalid_class: true
+  fail_on_out_of_bounds_bbox: true
+  detect_scene_leak: true
+
+governance:
+  published_is_not_accepted: true
+  mandatory_approvals:
+    - role: qc
+      required: true
+    - role: privacy
+      required: true
+  allowed_transitions:
+    DRAFT:
+      - VALIDATED
+      - HOLD
+      - REWORK
+    VALIDATED:
+      - APPROVED
+      - HOLD
+      - REWORK
+    HOLD:
+      - VALIDATED
+      - REWORK
+    REWORK:
+      - DRAFT
+      - VALIDATED
+    APPROVED:
+      - PUBLISHED
+      - HOLD
+    PUBLISHED:
+      - ACCEPTED
+      - HOLD
+    ACCEPTED: []

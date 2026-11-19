@@ -1,0 +1,4 @@
+{
+ "skip_frames": [100, 118],
+ "skip_reason": "f100 nhoe chuyen dong manh; f118 guc mat vao tay (mat khuat han) -> ve tay. Frame nam ngang (103,106,112) van sinh nhap sau khi xoay 4 huong, diem bat dong YOLO/ViTPose bi danh Q."
+}

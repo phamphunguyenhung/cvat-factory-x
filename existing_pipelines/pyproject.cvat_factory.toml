@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cvat-tools"
+version = "0.1.0"
+description = "CVAT Engineering Toolkit (CET): client, an toan ghi, tracking, benchmark CPU-first"
+requires-python = ">=3.11"
+dependencies = ["requests", "numpy", "pyyaml", "opencv-python", "psutil"]
+
+[project.optional-dependencies]
+vision = ["opencv-python", "ultralytics"]
+dev = ["pytest"]
+
+[project.scripts]
+cvat-tools = "cvat_tools.cli:main"
+cvat-factory = "cvat_tools.factory.cli:main"
+mtm = "mtm.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+testpaths = ["tests"]

@@ -1,0 +1,149 @@
+# Registry model. Trang thai backend: supported chi sau smoke test (khoi tao + suy luan) dat.
+models:
+  yolo26n:
+    task: detect
+    version: yolo26n (ultralytics 8.4.x)
+    checkpoint: yolo26n.pt
+    sha256_16: 9b09cc8bf347f0fc
+    source: https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26n.pt
+    license: AGPL-3.0 (Ultralytics)
+    hardware: CPU, RAM >= 4GB (nano)
+    classes:
+    - person
+    inference:
+      imgsz: 640
+      conf: 0.25
+      iou: 0.7
+    backends:
+      pytorch: supported (smoke 640px dat, 2026-11-13)
+      onnx: supported (smoke 640px dat, 2026-11-13)
+      openvino: supported (smoke 640px dat, 2026-11-13)
+      openvino_fp16: unverified
+      openvino_int8: 'BLOCKED: can du lieu calibration dai dien + GT de kiem tra mat
+        nguoi'
+    benchmark: data/benchmarks/detector_bench.csv (30 frame MOT17-09)
+  yolo26s:
+    task: detect
+    version: yolo26s (ultralytics 8.4.x)
+    checkpoint: yolo26s.pt
+    sha256_16: 646f8bc3fe0a6568
+    source: https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26s.pt
+    license: AGPL-3.0 (Ultralytics)
+    hardware: CPU, RAM >= 4GB (small)
+    classes:
+    - person
+    inference:
+      imgsz: 640
+      conf: 0.25
+      iou: 0.7
+    backends:
+      pytorch: supported (smoke 640px dat, 2026-11-13)
+      onnx: supported (smoke 640px dat, 2026-11-13)
+      openvino: supported (smoke 640px dat, 2026-11-13)
+      openvino_fp16: supported (bench 640px chay duoc; chat luong chua danh gia -
+        khong GT)
+      openvino_int8: 'BLOCKED: can du lieu calibration dai dien + GT de kiem tra mat
+        nguoi'
+    benchmark: data/benchmarks/detector_bench.csv (30 frame MOT17-09)
+  yolo26l:
+    task: detect
+    version: yolo26l (ultralytics 8.4.x)
+    checkpoint: yolo26l.pt
+    sha256_16: 9fe3c544f2b19beb
+    source: https://github.com/ultralytics/assets/releases/download/v8.4.0/yolo26l.pt
+    license: AGPL-3.0 (Ultralytics)
+    hardware: CPU, RAM >= 4GB (large)
+    classes:
+    - person
+    inference:
+      imgsz: 640
+      conf: 0.25
+      iou: 0.7
+    backends:
+      pytorch: supported (bench 640 va 1920)
+      onnx: unverified (chua export/smoke)
+      openvino: unverified (chua export/smoke)
+      openvino_fp16: unverified (chua export/smoke)
+      openvino_int8: 'BLOCKED: can du lieu calibration dai dien + GT de kiem tra mat
+        nguoi'
+    benchmark: data/benchmarks/detector_bench.csv (30 frame MOT17-09)
+
+  segformer-b2-cityscapes:
+    task: segment
+    version: nvidia/segformer-b2-finetuned-cityscapes-1024-1024
+    checkpoint: models/onnx/segformer_b2_cityscapes.onnx
+    source: https://huggingface.co/nvidia/segformer-b2-finetuned-cityscapes-1024-1024
+    license: NVIDIA Source Code License
+    hardware: CPU, RAM >= 2GB
+    memory_mb: 1200
+    heavyweight: true
+    classes: [road, sidewalk, building, fence, pole, traffic light, traffic sign, vegetation, terrain, sky, pedestrian, car, truck, bus]
+    inference:
+      imgsz: 1024
+    backends:
+      onnx: supported (CPU ~1.2s/frame)
+  segformer-lane-marking:
+    task: lane-segment
+    version: 8bits-ai/SegFormer-Lane-Marking
+    checkpoint: huggingface:8bits-ai/SegFormer-Lane-Marking
+    source: https://huggingface.co/8bits-ai/SegFormer-Lane-Marking
+    license: MIT / Apache-2.0
+    hardware: CPU, RAM >= 1.5GB
+    memory_mb: 900
+    heavyweight: true
+    classes: [lane_marking]
+    inference:
+      imgsz: 384
+    backends:
+      pytorch: supported (CPU ~0.6s/frame)
+  sam2.1-tiny:
+    task: prompt-segment
+    version: sam2.1_t
+    checkpoint: models/checkpoints/sam2.1_t.pt
+    source: https://github.com/facebookresearch/sam2
+    license: Apache-2.0
+    hardware: CPU, RAM >= 2.5GB
+    memory_mb: 1500
+    heavyweight: true
+    classes: [prompt_mask]
+    inference:
+      imgsz: 1024
+    backends:
+      pytorch: optional (lazy-loaded on demand)
+  fan2d:
+    task: landmarks
+    version: "face-alignment 1.5.0 (FAN 2DFAN4 + S3FD detector), iBUG-68"
+    checkpoint: "torch hub cache (tai tu adrianbulat.com lan dau, may nay D:/AI_Cache/torch/hub)"
+    source: https://github.com/1adrianb/face-alignment
+    license: BSD-3-Clause
+    hardware: "CPU, ~3.4 s/frame 640x480 (khong torch.compile)"
+    memory_mb: 1200
+    heavyweight: true
+    classes: [face_landmarks_68]
+    backends:
+      pytorch: "supported (smoke frame 93 job 1975, 2026-11-16; loi TB 4.8 px so voi nhan sua tay)"
+  vitpose_base:
+    task: pose
+    version: "ViTPose-B simple (transformers VitPoseForPoseEstimation), COCO-17"
+    checkpoint: "usyd-community/vitpose-base-simple (Hugging Face cache)"
+    source: https://huggingface.co/usyd-community/vitpose-base-simple
+    license: Apache-2.0
+    hardware: "CPU, ~1.5 s/frame sau khi nap (hop nguoi tu YOLO)"
+    memory_mb: 900
+    heavyweight: true
+    classes: [person_keypoints_17]
+    backends:
+      pytorch: "supported (smoke f119 job 1623, 2026-11-16)"
+    used_by: cvat_tools.pose.person17
+  yolo11l_pose:
+    task: pose
+    version: "yolo11l-pose (ultralytics 8.4.x), COCO-17"
+    checkpoint: tools/skeleton-pose-manager/models/yolo11l-pose.pt
+    source: https://github.com/ultralytics/assets
+    license: AGPL-3.0 (Ultralytics)
+    hardware: "CPU, ~1 s/frame"
+    memory_mb: 600
+    heavyweight: true
+    classes: [person_keypoints_17]
+    backends:
+      pytorch: "supported (Day 4 spm + cvat_tools.pose.person17)"

@@ -1,0 +1,41 @@
+{
+  "job_id": 1975,
+  "timestamp": "20261118_141219",
+  "backup_file": "D:\\06-Learning\\AIA-VINGROUP\\learning\\cvat\\week02\\task473-face\\job1975-face50\\backups\\before_face50_sync_20261118_141219.json",
+  "updated_shape_ids": [
+    1320940,
+    1320953,
+    1320983,
+    1321038,
+    1321040,
+    1321043,
+    1321044
+  ],
+  "created_shape_ids": [
+    1453124,
+    1453125,
+    1453126,
+    1453127,
+    1453128,
+    1453129,
+    1453130,
+    1453131,
+    1453132,
+    1453133,
+    1453134,
+    1453135,
+    1453136,
+    1453137
+  ],
+  "eligible_frames": [
+    106,
+    102,
+    94,
+    95,
+    105,
+    118
+  ],
+  "readback_mismatches": 0,
+  "before_hash": "4929b5a5ffad58fe",
+  "after_hash": "d6cbf6daac63277f"
+}

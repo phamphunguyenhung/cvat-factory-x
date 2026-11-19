@@ -1,0 +1,74 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Release Control Dashboard</title>
+<style>
+body{background:#f7f8fa;color:#111;font:14px/1.5 system-ui,sans-serif;padding:16px;max-width:1100px;margin:auto}
+section{background:#fff;border:1px solid #333;border-radius:6px;padding:12px;margin-bottom:12px}
+h2{margin:0 0 8px;font-size:16px}button{background:#111;color:#fff;border:0;border-radius:4px;padding:6px 12px;cursor:pointer;margin:2px}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid #bbb;padding:3px 6px;text-align:left;font-size:13px;word-break:break-all}
+.ok{background:#c8f0c8;color:#064006;padding:2px 8px;font-weight:700}.bad{background:#f6c6c6;color:#600;padding:2px 8px;font-weight:700}
+.sim{background:#ffe8a3;color:#533;padding:1px 6px}.step{display:inline-block;border:1px solid #111;padding:2px 8px;margin:2px}.cur{background:#111;color:#fff}
+pre{white-space:pre-wrap;font-size:12px;margin:4px 0}
+</style></head><body>
+<h1>Data Release Control Tower</h1><div id="msg"></div>
+<section id="agent"><h2>0. Agent Console (lenh co dinh, chay release_control.cli_live)</h2>
+<div id="agbtn"></div><div id="agstat"></div><div id="agjob"></div><pre id="agout"></pre></section>
+<section><h2>0b. Trang thai job CVAT</h2><div id="jobst">dang tai...</div></section>
+<section><h2>0c. Hang doi review theo rui ro</h2><div id="queue">dang tai...</div></section>
+<section><h2>0d. Audit log</h2><div id="audit">dang tai...</div></section>
+<section><h2>1. Dataset &amp; snapshot</h2><div id="ds"></div>
+<button onclick="snap('clean')">Snapshot dataset sach</button><button onclick="snap('faulty')">Snapshot ban sao loi</button>
+<table id="snaps"></table></section>
+<section><h2>2. Fault Lab (chi inject vao ban sao local)</h2><div id="faults"></div><button onclick="inj()">Inject</button><pre id="injout"></pre></section>
+<section><h2>3. Validate</h2><button onclick="val('clean')">Validate dataset sach</button><button onclick="val('faulty')">Validate ban sao loi</button><div id="valout"></div></section>
+<section><h2>4. Lineage (blast radius, snapshot moi nhat)</h2><div id="lin"></div></section>
+<section><h2>5. So sanh version &amp; Restore</h2><select id="sa"></select> vs <select id="sb"></select>
+<button onclick="df()">So sanh</button><button onclick="rs()">Restore A</button><pre id="dfout"></pre><div id="rsout"></div></section>
+<section><h2>6. Trang thai release</h2><div id="rel"></div><button onclick="mkrel()">Tao release tu snapshot A + validate</button>
+<p>Approval, publish, ACCEPTED can nguoi/consumer that ACK; dashboard khong tu tao.</p></section>
+<script>
+const $=id=>document.getElementById(id);let S={};
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+async function api(u,b){const r=await fetch(u,b?{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}:{});const j=await r.json();if(!r.ok)throw new Error(j.detail||r.status);return j}
+async function load(){S=await api('/api/state');
+$('msg').innerHTML=S.has_dataset?'':'<p class="bad">chua co dataset ('+esc(S.dataset_path)+')</p>';
+$('ds').textContent=S.has_dataset?'Dataset: '+S.dataset_path:'chua co dataset';
+$('faults').innerHTML=S.fault_types.map(f=>`<label><input type=checkbox value="${f}"> ${f}</label><br>`).join('');
+$('snaps').innerHTML='<tr><th>tag</th><th>digest</th><th>anh</th><th>nhan</th></tr>'+S.snapshots.map(s=>`<tr><td>${esc(s.version)}</td><td>${s.snapshot_id.slice(0,16)}</td><td>${s.image_count}</td><td>${s.label_count}</td></tr>`).join('');
+const o=S.snapshots.map(s=>`<option value="${s.snapshot_id}">${esc(s.version)} ${s.snapshot_id.slice(0,10)}</option>`).join('');$('sa').innerHTML=o;$('sb').innerHTML=o;
+$('rel').innerHTML=S.releases.map(r=>`<div><b>${esc(r.release_id)}</b> `+S.ladder.map(x=>`<span class="step ${x==r.status?'cur':''}">${x}</span>`).join('')+'</div>').join('')||'chua co release';
+lin()}
+async function wrap(f){try{await f()}catch(e){alert(e.message)}}
+const snap=(s)=>wrap(async()=>{await api('/api/snapshot',{source:s,tag:s+'-'+Date.now()%100000});load()});
+const inj=()=>wrap(async()=>{const f=[...document.querySelectorAll('#faults input:checked')].map(i=>i.value);const m=await api('/api/inject',{faults:f});$('injout').textContent=JSON.stringify(m.summary)+'\n'+m.faults.map(x=>x.fault_type+': '+x.description).join('\n')});
+const val=(s)=>wrap(async()=>{const r=await api('/api/validate',{source:s});
+$('valout').innerHTML=`<span class="${r.recommended_status=='VALIDATED'?'ok':'bad'}">${r.recommended_status}</span> critical=${r.severity_counts.CRITICAL} review=${r.requires_human_review}<table><tr><th>loai</th><th>muc</th><th>thong diep</th><th>bang chung</th></tr>`+r.issues.slice(0,200).map(i=>`<tr><td>${esc(i.fault_type)}</td><td>${esc(i.severity)}</td><td>${esc(i.message)}</td><td>${esc(JSON.stringify(i.evidence||i.details||i.file_path||''))}</td></tr>`).join('')+'</table>'});
+async function lin(){const s=S.snapshots[S.snapshots.length-1];if(!s){$('lin').textContent='chua co snapshot, chua co lineage';return}
+try{const r=await api('/api/lineage?node='+encodeURIComponent(s.snapshot_id));
+$('lin').innerHTML='<table><tr><th>nguon</th><th>quan he</th><th>dich</th><th>bang chung</th></tr>'+(r.edges||[]).map(e=>`<tr><td>${esc(e.source_id).slice(0,20)}</td><td>${esc(e.relation)}</td><td>${esc(e.target_id).slice(0,20)}</td><td>${e.label=='simulated'?'<span class="sim">simulated</span>':'verified'}</td></tr>`).join('')+'</table>'}catch(e){$('lin').textContent=e.message}}
+const df=()=>wrap(async()=>{const r=await api('/api/diff?a='+$('sa').value+'&b='+$('sb').value);$('dfout').textContent=JSON.stringify(r,null,1).slice(0,3000)});
+const rs=()=>wrap(async()=>{const r=await api('/api/restore',{digest:$('sa').value});$('rsout').innerHTML=`<span class="${r.match?'ok':'bad'}">${r.match?'digest KHOP':'digest KHONG khop'}</span> ${esc(r.error||'')}<pre>${esc(r.expected||'')}\n${esc(r.restored||'')}</pre>`});
+const mkrel=()=>wrap(async()=>{await api('/api/release',{digest:$('sa').value,source:'clean'});load()});
+const CMDS=['ingest','prelabel','route','pull','validate','inject','trace','restore'];
+$('agbtn').innerHTML=CMDS.map(c=>`<button onclick="agent('${c}')">${c}</button>`).join('');
+const link=u=>u?`<a href="${esc(u)}" target="_blank" rel="noopener">Mo job CVAT: ${esc(u)}</a>`:'';
+async function agent(c){$('agout').textContent='dang chay '+c+' ...';$('agstat').innerHTML='';$('agjob').innerHTML='';
+try{const r=await api('/api/agent/'+c,{});
+if(r.ready===false){$('agstat').innerHTML='<span class="bad">'+esc(r.message)+'</span>';$('agout').textContent='';return}
+$('agstat').innerHTML=`<span class="${r.ok?'ok':'bad'}">${r.ok?'OK':'LOI'} ${esc(r.message||'')}</span> rc=${r.returncode??''}`;
+$('agjob').innerHTML=link(r.job_url);
+$('agout').textContent=(r.json?JSON.stringify(r.json,null,1):r.stdout)+(r.stderr?'\n[stderr]\n'+r.stderr:'')}
+catch(e){$('agout').textContent=e.message}
+panels()}
+function table(rows){if(!rows.length)return 'rong';const k=[...new Set(rows.flatMap(r=>typeof r=='object'&&r?Object.keys(r):[]))].slice(0,8);
+if(!k.length)return '<pre>'+esc(JSON.stringify(rows,null,1))+'</pre>';
+return '<table><tr>'+k.map(x=>'<th>'+esc(x)+'</th>').join('')+'</tr>'+rows.slice(0,200).map(r=>'<tr>'+k.map(x=>'<td>'+esc(typeof r[x]=='object'?JSON.stringify(r[x]):(r[x]??''))+'</td>').join('')+'</tr>').join('')+'</table>'}
+async function panels(){
+try{const s=await api('/api/agent/status');if(!s.cli_ready&&!$('agstat').innerHTML)$('agstat').innerHTML='<span class="bad">'+esc(s.message)+'</span>';if(!$('agjob').innerHTML)$('agjob').innerHTML=link(s.job_url)}catch(e){}
+try{const j=await api('/api/job');$('jobst').innerHTML=j.ready?`task_id=${esc(j.task_id)} job_id=${esc(j.job_id)} frame=${j.frames} shape=${j.shapes??'?'} ${j.shapes_message?'<span class="sim">'+esc(j.shapes_message)+'</span>':''}<br>${link(j.job_url)}`:'<span class="bad">'+esc(j.message)+'</span>'}catch(e){$('jobst').textContent=e.message}
+try{const q=await api('/api/queue');if(!q.ready)$('queue').innerHTML='<span class="bad">'+esc(q.message)+'</span>';else{const r=q.route;let rows=Array.isArray(r)?r:(Object.values(r).find(Array.isArray)||[]);
+const sc=x=>x.risk??x.score??x.risk_score??0;rows=[...rows].sort((a,b)=>sc(b)-sc(a));
+$('queue').innerHTML=table(rows)+'<p>Diem rui ro la goi y uu tien review, khong phai bang chung dung/sai.</p>'}}catch(e){$('queue').textContent=e.message}
+try{const a=await api('/api/audit');$('audit').innerHTML=a.ready?`<span class="${a.chain_ok?'ok':'bad'}">verify_chain: ${a.chain_ok?'DUNG':'SAI'}</span> ${a.entries.length} dong`+table(a.entries.slice(-100)):'<span class="bad">'+esc(a.message)+'</span>'}catch(e){$('audit').textContent=e.message}}
+panels();
+load().catch(e=>$('msg').textContent=e.message);
+</script></body></html>
